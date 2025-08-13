@@ -1,34 +1,34 @@
+require('dotenv').config();
 
+const { Pool } = require('pg');
 
-const sqlite3 = require('sqlite3').verbose();
-const path = require('path');
-
-
-const DB_PATH = path.join(__dirname, '..', '..', 'database.db'); 
-
-
-const db = new sqlite3.Database(DB_PATH, (err) => {
-  if (err) {
-    console.error('Erro ao conectar ao banco de dados:', err.message);
-    throw err; 
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
   }
-  
-  console.log('Conectado ao banco de dados SQLite.');
 });
 
+const initializeDatabase = async () => {
+  const createTableQuery = `
+    create table if not exists participations (
+      id serial primary key,
+      firstName text not null,
+      lastName text not null,
+      participation integer not null
+    );
+  `;
 
-db.serialize(() => {
-  db.run(`CREATE TABLE IF NOT EXISTS participations (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    firstName TEXT NOT NULL,
-    lastName TEXT NOT NULL,
-    participation INTEGER NOT NULL
-  )`, (err) => {
-    if (err) {
-      console.error('Erro ao criar a tabela:', err.message);
-    }
-  });
-});
+  try {
+    await pool.query(createTableQuery);
+    console.log('Banco de dados conectado e tabela "participations" pronta.');
+  } catch (err) {
+    console.error('Erro ao inicializar o banco de dados:', err.stack);
+    process.exit(1);
+  }
+};
 
-
-module.exports = db;
+module.exports = {
+  pool,
+  initializeDatabase
+};
