@@ -169,9 +169,15 @@ button {
     }
 
     #participation-form {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .campo {
+        width: 80%;
+        height: 45px;
     }
 
     p {
