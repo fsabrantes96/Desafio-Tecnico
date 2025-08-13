@@ -5,7 +5,7 @@ const { pool } = require('../config/database');
 
 router.get('/', async (req, res) => {
     try {
-        const result = await pool.query('select * from participations order by id');
+        const result = await pool.query('SELECT * FROM participations ORDER BY id');
         res.json({ message: 'success', data: result.rows });
     } catch (err) {
         console.error(err.message);
@@ -23,8 +23,9 @@ router.post('/', async (req, res) => {
     if (isNaN(participationNumber) || participationNumber <= 0) {
         return res.status(400).json({ "error": "O campo 'Participação' deve ser um número positivo." });
     }
-    const sql = 'insert into participations (firstName, lastName, participation) values ($1, $2, $3) returning *';
-    const params = [firstName, lastName, participation]; 
+    
+    const sql = 'INSERT INTO participations (firstName, lastName, participation) VALUES ($1, $2, $3) RETURNING *';
+    const params = [firstName, lastName, participationNumber]; 
     
     try {
         const result = await pool.query(sql, params);
@@ -46,20 +47,18 @@ router.put('/:id', async (req, res) => {
 
     const participationNumber = parseInt(participation);
     if (isNaN(participationNumber) || participationNumber <= 0) {
-        
         return res.status(400).json({ "error": "O campo 'Participação' deve ser um número positivo." });
     }
 
-    
     const sql = `
-        update participations 
-        set 
+        UPDATE participations 
+        SET 
             firstName = $1,
             lastName = $2,
             participation = $3
-        where id = $4 returning *
+        WHERE id = $4 RETURNING *
     `;
-    const params = [firstName, lastName, participation, id];
+    const params = [firstName, lastName, participationNumber, id];
 
     try {
         const result = await pool.query(sql, params);
@@ -75,7 +74,7 @@ router.put('/:id', async (req, res) => {
 
 
 router.delete('/', async (req, res) => {
-    const sql = 'truncate table participations restart identity';
+    const sql = 'TRUNCATE TABLE participations RESTART IDENTITY';
     try {
         await pool.query(sql);
         res.status(200).json({ message: 'Todos os dados foram limpos com sucesso.' });
