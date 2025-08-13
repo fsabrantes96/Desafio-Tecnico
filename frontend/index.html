@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Desafio COTABOX</title>
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="conteudo-cabecalho">
+            <form id="participation-form">
+                <input type="text" id="nome" class="campo" placeholder="Nome" required>
+                <input type="text" id="sobrenome" class="campo" placeholder="Sobrenome" required>
+                <input type="number" id="participacao" class="campo" placeholder="Participação" required min="1">
+                <button type="submit" class="btn-enviar">Enviar</button>
+            </form>
+        </div>
+    </header>
+
+    <div id="alert-placeholder"></div>
+
+    <section class="data-content">
+        <div class="texto">
+            <h2>DATA</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="informacoes">
+            <div class="tabela">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nome</th>
+                            <th>Sobrenome</th>
+                            <th>Participação</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="participacao-table-body"></tbody>
+                </table>
+            </div>
+            <div class="grafico-container">
+                <canvas id="grafico-rosca"></canvas>
+            </div>
+        </div>
+        <div class="gerenciar-dados">
+            <div class="botoes">
+                <button id="clear-data-btn" class="limpar">Limpar dados</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

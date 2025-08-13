@@ -1,0 +1,164 @@
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+.cabecalho {
+    background-color: #0547ff;
+    padding: 50px;
+}
+
+.conteudo-cabecalho {
+    display: flex;
+    justify-content: center;
+}
+
+.campo {
+    height: 35px;
+    padding: 0 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 3px;
+}
+
+.btn-enviar {
+    height: 35px;
+    padding: 0 10px;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    background-color: #0547ff;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.btn-enviar:hover {
+    color: #006400;
+    background-color: #fff;
+}
+
+
+.alert {
+    padding: 15px;
+    margin: 1rem 2rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.texto {
+    font-family: sans-serif;
+    color: darkslategrey;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p {
+    margin-top: 20px;
+}
+
+.informacoes {
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 50px;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    font-family: sans-serif;
+    color: #888787;
+}
+
+.tabela th, td {
+    border: 1px solid #c6c6c6;
+    padding: 5px;
+}
+
+td:first-child {
+    width: 30px;
+    text-align: center;
+}
+
+.botoes {
+    display: flex;
+    justify-content: center;
+}
+
+button { 
+    height: 35px;
+    margin: 10px;
+    padding: 0 10px;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    
+}
+
+.btn-edit {
+    background-color: #ff8205;
+    transition: 0.3s ease;
+}
+
+.btn-edit:hover {
+    transform: scale(1.1);
+}
+
+.limpar {
+    background-color: #ff0505;
+    transition: 0.3s ease;
+    margin: 20px;
+}
+
+.limpar:hover {
+    transform: scale(1.1);
+}
