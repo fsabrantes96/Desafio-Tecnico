@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3001/api/participations';
+const API_URL = 'https://desafio-tecnico-a6ex.onrender.com';
 
 // Elementos do DOM
 const form = document.getElementById('participation-form');
