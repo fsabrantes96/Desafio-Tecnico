@@ -14,12 +14,12 @@ let currentEditId = null;
 let currentParticipationData = [];
 
 // Função para buscar os dados da API e atualizar a página.
-
 async function fetchDataAndUpdate() {
     try {
         const response = await fetch(API_URL);
         if (!response.ok) {
-            throw new Error('Falha ao buscar dados da API.');
+            const errorText = await response.text();
+            throw new Error(`Falha ao buscar dados da API: ${errorText}`);
         }
         const result = await response.json();
         
@@ -47,11 +47,11 @@ function updateTable(data) {
         const tr = document.createElement('tr');
         tr.innerHTML = `
             <td>${item.id}</td>
-            <td>${item.firstName}</td>
-            <td>${item.lastName}</td>
+            <td>${item.firstname}</td>
+            <td>${item.lastname}</td>
             <td>${item.participation}%</td>
             <td>
-                <button class="btn-action btn-edit" data-id="${item.id}" data-firstname="${item.firstName}" data-lastname="${item.lastName}" data-participation="${item.participation}">
+                <button class="btn-action btn-edit" data-id="${item.id}" data-firstname="${item.firstname}" data-lastname="${item.lastname}" data-participation="${item.participation}">
                     Editar
                 </button>
             </td>
@@ -64,7 +64,7 @@ function updateTable(data) {
 function updateChart(data) {
     const ctx = document.getElementById('grafico-rosca').getContext('2d');
     
-    const labels = data.map(p => `${p.firstName} ${p.lastName}`);
+    const labels = data.map(p => `${p.firstname} ${p.lastname}`);
     const participationData = data.map(p => p.participation);
     
     const backgroundColors = data.map(() => `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.7)`);
