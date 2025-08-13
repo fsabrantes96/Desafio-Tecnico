@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
     if (isNaN(participationNumber) || participationNumber <= 0) {
         return res.status(400).json({ "error": "O campo 'Participação' deve ser um número positivo." });
     }
-    const sql = 'insert into participations (firstName, lastName, participation) values ($1, $2, $3) returning*';
+    const sql = 'insert into participations (firstName, lastName, participation) values ($1, $2, $3) returning *';
     const params = [firstName, lastName, participation]; 
     
     try {
