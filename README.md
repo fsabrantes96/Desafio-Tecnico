@@ -2,6 +2,9 @@
 
 Aplicação web para cadastrar participações e visualizar os dados em uma tabela e um gráfico de donuts dinâmico.
 
+## Hospedagem
+https://desafio-tecnico-gold.vercel.app/
+
 ## Estrutura
 
 - **/frontend**: Contém os arquivos estáticos (HTML, CSS, JS) da interface do usuário.
